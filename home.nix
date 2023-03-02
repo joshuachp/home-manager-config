@@ -20,25 +20,30 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-      neovim
-      git
-      chezmoi
-      tmux
-      gopass
-      starship
+    neovim
+    git
+    chezmoi
+    tmux
+    gopass
+    starship
 
-      exa
-      bat
-      ripgrep
+    exa
+    bat
+    ripgrep
 
-      clang
-      nodejs
-      clang-tools
+    clang
+    nodejs
+    clang-tools
 
-      lazydocker
-      pre-commit
+    lazydocker
+    pre-commit
+    direnv
 
-      nixpkgs-fmt
+    nixpkgs-fmt
+    nil
+    statix
+    nix-direnv
   ];
+
   programs.alacritty.enable = true;
 }
