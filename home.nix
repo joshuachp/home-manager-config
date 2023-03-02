@@ -44,5 +44,7 @@
     nil
     statix
     nix-direnv
+
+    bacon
   ];
 }
