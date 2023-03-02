@@ -44,6 +44,4 @@
     statix
     nix-direnv
   ];
-
-  programs.alacritty.enable = true;
 }
