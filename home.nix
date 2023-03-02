@@ -34,6 +34,11 @@
       clang
       nodejs
       clang-tools
+
+      lazydocker
+      pre-commit
+
+      nixpkgs-fmt
   ];
   programs.alacritty.enable = true;
 }
