@@ -30,6 +30,7 @@
     exa
     bat
     ripgrep
+    fd
 
     clang
     nodejs
