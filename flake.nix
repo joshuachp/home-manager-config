@@ -47,14 +47,14 @@
 
   };
 
-  outputs = { nixpkgs, home-manager, fenix, neovim-config, note, tools, jump, ... }:
+  outputs = { nixpkgs, home-manager, fenix, neovim-config, note, tools, jump, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
 
         overlays = [
-          # fenix.overlays.default
+          fenix.overlays.default
           # neovim-config.nixosModules.default
         ];
       };
@@ -75,23 +75,24 @@
               tools.packages.${system}.shell-tools
               tools.packages.${system}.rust-tools
 
-              # (pkgs.fenix.complete.withComponents [
-              #   "cargo"
-              #   "clippy"
-              #   "rust-src"
-              #   "rustc"
-              #   "rustfmt"
-              # ])
+              (pkgs.fenix.complete.withComponents [
+                "cargo"
+                "clippy"
+                "rust-src"
+                "rustc"
+                "rustfmt"
+              ])
 
-              # rust-analyzer
-              # cargo-criterion
-              # cargo-edit
+              rust-analyzer
+              cargo-criterion
+              cargo-edit
             ];
           }
         ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
+        extraSpecialArgs = inputs;
       };
 
 
