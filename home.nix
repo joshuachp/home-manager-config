@@ -46,5 +46,6 @@
     nix-direnv
 
     bacon
+    sccache
   ];
 }
