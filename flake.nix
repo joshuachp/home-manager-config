@@ -16,6 +16,10 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Package utilities
     flake-utils.url = "github:numtide/flake-utils";
@@ -47,14 +51,15 @@
 
   };
 
-  outputs = { nixpkgs, home-manager, fenix, neovim-config, note, tools, jump, ... }@inputs:
+  outputs = { nixpkgs, home-manager, fenix, rust-overlay, neovim-config, note, tools, jump, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
 
         overlays = [
-          fenix.overlays.default
+          rust-overlay.overlays.default
+          #fenix.overlays.default
           # neovim-config.nixosModules.default
         ];
       };
@@ -75,13 +80,14 @@
               tools.packages.${system}.shell-tools
               tools.packages.${system}.rust-tools
 
-              (pkgs.fenix.complete.withComponents [
-                "cargo"
-                "clippy"
-                "rust-src"
-                "rustc"
-                "rustfmt"
-              ])
+              rust-bin.stable."1.59".default
+              # (pkgs.fenix.complete.withComponents [
+              #   "cargo"
+              #   "clippy"
+              #   "rust-src"
+              #   "rustc"
+              #   "rustfmt"
+              # ])
 
               rust-analyzer
               cargo-criterion
