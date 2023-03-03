@@ -80,7 +80,7 @@
               tools.packages.${system}.shell-tools
               tools.packages.${system}.rust-tools
 
-              rust-bin.stable."1.59".default
+              rust-bin.stable."1.59.0".default
               # (pkgs.fenix.complete.withComponents [
               #   "cargo"
               #   "clippy"
