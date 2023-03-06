@@ -53,6 +53,10 @@
       pkgs = import nixpkgs {
         inherit system;
 
+        config = {
+          allowUnfree = true;
+        };
+
         overlays = [
           fenix.overlays.default
           # neovim-config.nixosModules.default
